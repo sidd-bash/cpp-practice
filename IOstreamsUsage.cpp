@@ -10,7 +10,8 @@
 
 
 
-int main(){
+void usageOfCerr()
+{
     int data;
     std::cin>>data;
     std::cout<<"Data: "<< data <<std::endl; //std::endl equivalent to cout<<"\n"<<flush
@@ -28,5 +29,25 @@ int main(){
     catch(const char*err){
         std::cerr<<err;
     }
+}
 
+class Date{
+    int mm,dd,yy;
+    public:
+    Date(int m,int d,int y){
+        mm=m;
+        dd=d;
+        yy=y;
+    }
+    friend std::ostream& operator<<(std::ostream& os, const Date& dt);
+};
+void overloadingInsertionOperator(){
+    Date dt(5,5,12);
+    std::cout<<dt;
+    
+}
+int main(){
+    usageOfCerr();
+    overloadingInsertionOperator();
+    return 0;
 }
